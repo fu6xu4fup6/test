@@ -54,7 +54,7 @@ while True:
         systemCapacity = res[2]
         calculatedCapacity = res[3]
         sys.stdout.write("\r Sample: #%d  (%d%%)  \033[36mEC:\033[0m %.2f mWh  \033[32mDR:\033[0m %d mW  \033[33mV:\033[0m %.3f v \
-         \033[34mSC:\033[0m %d/%d mWh \033[35mCC:\033[0m %.2f/%d mWh     " % (samples, energyPercentage, energyConsumed, dischargeRate, voltage, res[2], res[3], beginCapability-energyConsumed, res[3]))
+         \033[34mSC:\033[0m %d/%d mWh \033[35mCC:\033[0m %.2f/%d mWh     " % (samples, energyPercentage, energyConsumed, dischargeRate, voltage, systemCapacity, calculatedCapacity, beginCapability-energyConsumed, calculatedCapacity))
         sys.stdout.flush()
     elif res[0] > 0:
         isBegin = True
@@ -64,4 +64,4 @@ print()
 print("A/C Adapter detected, Wait 5s for capacity update...")
 sleep(5)
 res = getBatInfo()
-print("Full Charge Capacity: %d -> %d mWh" % (oriFullCapability, res[3]))
+print("Full Charge Capacity: %d -> %d mWh" % (oriFullCapability, calculatedCapacity))
